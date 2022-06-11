@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -15,23 +16,28 @@ import javax.swing.JTextArea;
 import javax.swing.Timer;
 
 public class PrimogemMain {
-	
-	JLabel counterLabel, perSecLabel, charLabel;
-	JButton button1, button2, button3, button4, button5, button6;
+	JFrame window = new JFrame();
+	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel;
+	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel;
+	JButton button1, button2, button3, button4, button5, button6, startButton;
 	int primogemCounter, timerSpeed, amberNumber, amberPrice, barbaraNumber, barbaraPrice, monaNumber, monaPrice, fischlNumber, fischlPrice, qiqiNumber, qiqiPrice, ganyuNumber, ganyuPrice; 
 	double perSecond;
 	boolean timerOn, barbaraUnlocked, monaUnlocked, fischlUnlocked, qiqiUnlocked, ganyuUnlocked;
-	Font font1, font2;
+	Font font1, font2, font3, font4;
 	PrimogemHandler pHandler = new PrimogemHandler();
 	Timer timer;
 	JTextArea messageText;
 	MouseHandler mHandler = new MouseHandler();
+	TitleScreenHandler TsHandler = new TitleScreenHandler();
+	
+	
 	
     public static void main(String[] args) {
         new PrimogemMain();
     }
     
     public PrimogemMain(){
+    	
     	timerOn = false;
 		perSecond = 0;
 		primogemCounter = 0;
@@ -52,29 +58,82 @@ public class PrimogemMain {
 		ganyuNumber = 0;
 		ganyuUnlocked = false;
 		ganyuPrice = 28800;
+	
+		
 		
 		
     	primogemCounter = 0;
     	
     	createFont();
-        createUI();
-        
+    	createMenuUI();
     }
     
     public void createFont() {
     	font1 = new Font("Comic Sans MS", Font.PLAIN, 40);
     	font2 = new Font("Comic Sans MS", Font.PLAIN, 30);
-    	
-    	
+    	font3 = new Font("DialogInput", Font.PLAIN, 50);
+    	font4 = new Font("Monospaced", Font.PLAIN, 50);
     }
     
-    public void createUI(){
-        JFrame window = new JFrame();
+    public void createMenuUI() {
+    	
+    	window.setSize(1280, 720);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.getContentPane().setBackground(Color.black);
+        window.setTitle("PrimoClicker");
+        window.setLayout(null);
+        window.setResizable(false);
+        window.getContentPane().setBackground(Color.black);
+        
+    	titleNamePanel = new JPanel();
+        titleNamePanel.setBackground(Color.black);
+        titleNamePanel.setBounds(340, 150, 600, 300);
+        titleNameLabel = new JLabel("PrimoClicker");
+        titleNameLabel.setFont(font3);
+        titleNameLabel.setSize(700,700);
+        titleNameLabel.setForeground(Color.white);
+        titleNamePanel.add(titleNameLabel);
+        
+        startButtonPanel = new JPanel();
+        startButtonPanel.setBounds(240, 400, 800, 200);
+        startButtonPanel.setBackground(Color.black);
+        
+        paimonPanel = new JPanel();
+        paimonPanel.setBounds(535, 250, 200, 150);
+        paimonPanel.setBackground(Color.black);
+        paimonLabel = new JLabel();
+        paimonPanel.add(paimonLabel);
+        window.add(paimonPanel);
+        ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png"));
+        paimonLabel.setIcon(paimonpixel);
+        
+        
+        startButton = new JButton("CLICK!");
+        startButton.setSize(900, 500);
+        startButton.setBackground(Color.red);
+        startButton.setForeground(Color.WHITE);
+        startButton.setFont(font4);
+        startButton.addActionListener(TsHandler);
+        startButton.setFocusPainted(false);
+        startButtonPanel.add(startButton);
+        window.add(startButtonPanel);
+        window.add(titleNamePanel);
+        
+        window.setVisible(true);
+    }
+    
+    public void createGameUI(){
+    	titleNamePanel.setVisible(false);
+    	startButtonPanel.setVisible(false);
+    	paimonPanel.setVisible(false);
         window.setSize(1280, 720);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
+        window.setTitle("PrimoClicker");
         window.setLayout(null);
-
+        window.setResizable(false);
+      
+        
         JPanel primoPanel = new JPanel();
         primoPanel.setBounds(100, 200, 300, 600);
         primoPanel.setBackground(Color.black);
@@ -258,6 +317,13 @@ public class PrimogemMain {
 		timer.start();
 	}
     
+    public class TitleScreenHandler implements ActionListener{
+
+        public void actionPerformed(ActionEvent event) {
+            createGameUI();
+        }
+    }
+    
     public class PrimogemHandler implements ActionListener {
     	public void actionPerformed(ActionEvent event) {
     		
@@ -317,7 +383,7 @@ public class PrimogemMain {
 
                     monaNumber++;
                     button3.setText("Mona " + "(" + monaNumber + ")");
-                    messageText.setText("Mona\n[price: " + monaPrice + "]\nEach Mona produces\n 40 primogems per second.");
+                    messageText.setText("Mona\n[price: " + monaPrice + "]\nEach Mona produces\n40 primogems per second.");
                     ImageIcon monapixel = new ImageIcon(getClass().getResource("monapixel.png"));
                     charLabel.setIcon(monapixel);
                     
@@ -337,7 +403,7 @@ public class PrimogemMain {
 
                     fischlNumber++;
                     button4.setText("Fischl " + "(" + fischlNumber + ")");
-                    messageText.setText("Fischl\n[price: " + fischlPrice + "]\nEach Fischl produces\n 160 primogems per second.");
+                    messageText.setText("Fischl\n[price: " + fischlPrice + "]\nEach Fischl produces\n160 primogems per second.");
                     ImageIcon fischlpixel = new ImageIcon(getClass().getResource("fischlpixel.png"));
                     charLabel.setIcon(fischlpixel);
                   
@@ -357,7 +423,7 @@ public class PrimogemMain {
 
                     qiqiNumber++;
                     button5.setText("Qiqi " + "(" + qiqiNumber + ")");
-                    messageText.setText("Qiqi\n[price: " + qiqiPrice + "]\nEach Qiqi produces\n 480 primogems per second.");
+                    messageText.setText("Qiqi\n[price: " + qiqiPrice + "]\nEach Qiqi produces\n480 primogems per second.");
                     
                     ImageIcon qiqipixel = new ImageIcon(getClass().getResource("qiqipixel.png"));
                     charLabel.setIcon(qiqipixel);
@@ -378,7 +444,7 @@ public class PrimogemMain {
 
                     ganyuNumber++;
                     button6.setText("Ganyu " + "(" + ganyuNumber + ")");
-                    messageText.setText("Ganyu\n[price: " + ganyuPrice + "]\nEach Ganyu produces\n 1600 primogems per second.");
+                    messageText.setText("Ganyu\n[price: " + ganyuPrice + "]\nEach Ganyu produces\n1600 primogems per second.");
                     
                     ImageIcon ganyupixel = new ImageIcon(getClass().getResource("ganyupixel.png"));
                     charLabel.setIcon(ganyupixel);
@@ -431,7 +497,7 @@ public class PrimogemMain {
 				messageText.setText("\n\nThis item is\ncurrently locked!");
 				}
 				else{
-                    messageText.setText("Mona\n[price: " + monaPrice + "]\nEach Mona produces 40 primogems per second");
+                    messageText.setText("Mona\n[price: " + monaPrice + "]\nEach Mona produces\n40 primogems per second");
                 }
 			}
 			
@@ -440,7 +506,7 @@ public class PrimogemMain {
 				messageText.setText("\n\nThis item is\ncurrently locked!");
 				}
 				else{
-                    messageText.setText("Fischl\n[price: " + fischlPrice + "]\nEach Fischl produces 160 primogems per second");
+                    messageText.setText("Fischl\n[price: " + fischlPrice + "]\nEach Fischl produces\n160 primogems per second");
                 }
 			}
 			
@@ -449,7 +515,7 @@ public class PrimogemMain {
 				messageText.setText("\n\nThis item is\ncurrently locked!");
 				}
 				else{
-                    messageText.setText("Qiqi\n[price: " + qiqiPrice + "]\nEach Qiqi produces 480 primogems per second");
+                    messageText.setText("Qiqi\n[price: " + qiqiPrice + "]\nEach Qiqi produces\n480 primogems per second");
                 }
 			}
 			
@@ -458,7 +524,7 @@ public class PrimogemMain {
 				messageText.setText("\n\nThis item is\ncurrently locked!");
 				}
 				else{
-                    messageText.setText("Ganyu\n[price: " + ganyuPrice + "]\nEach Ganyu produces 1600 primogems per second");
+                    messageText.setText("Ganyu\n[price: " + ganyuPrice + "]\nEach Ganyu produces\n1600 primogems per second");
                 }
 			}
 		}
