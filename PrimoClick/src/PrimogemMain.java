@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -29,15 +28,12 @@ public class PrimogemMain {
 	JTextArea messageText;
 	MouseHandler mHandler = new MouseHandler();
 	TitleScreenHandler TsHandler = new TitleScreenHandler();
-	
-	
-	
+
     public static void main(String[] args) {
         new PrimogemMain();
     }
     
     public PrimogemMain(){
-    	
     	timerOn = false;
 		perSecond = 0;
 		primogemCounter = 0;
@@ -58,12 +54,7 @@ public class PrimogemMain {
 		ganyuNumber = 0;
 		ganyuUnlocked = false;
 		ganyuPrice = 28800;
-	
-		
-		
-		
     	primogemCounter = 0;
-    	
     	createFont();
     	createMenuUI();
     }
@@ -106,8 +97,7 @@ public class PrimogemMain {
         window.add(paimonPanel);
         ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png"));
         paimonLabel.setIcon(paimonpixel);
-        
-        
+
         startButton = new JButton("CLICK!");
         startButton.setSize(900, 500);
         startButton.setBackground(Color.red);
@@ -132,8 +122,7 @@ public class PrimogemMain {
         window.setTitle("PrimoClicker");
         window.setLayout(null);
         window.setResizable(false);
-      
-        
+     
         JPanel primoPanel = new JPanel();
         primoPanel.setBounds(100, 200, 300, 600);
         primoPanel.setBackground(Color.black);
@@ -145,7 +134,6 @@ public class PrimogemMain {
         window.add(charPanel);
 
         ImageIcon primogem = new ImageIcon(getClass().getResource("primogemimg.png"));
-        
         
         JButton primogemButton = new JButton();
         primogemButton.setBackground(Color.black);
@@ -230,7 +218,6 @@ public class PrimogemMain {
 		button6.addMouseListener(mHandler);
 		itemPanel.add(button6);
         
-		
 		JPanel messagePanel = new JPanel();
 		messagePanel.setBounds(850, 70, 500, 200);
 		messagePanel.setBackground(Color.black);
@@ -250,44 +237,36 @@ public class PrimogemMain {
     }
     
     public void setTimer(){
-		
 		timer = new Timer(timerSpeed, new ActionListener(){
-			
 			@Override
 			public void actionPerformed(ActionEvent e){
-				
 				primogemCounter++;
 				counterLabel.setText(primogemCounter + " primogems");
 				
 				if(barbaraUnlocked==false){
 					if(primogemCounter>=160){
 						barbaraUnlocked=true;
-						button2.setText("Barbara " + "(" + barbaraNumber + ")");
-						
+						button2.setText("Barbara " + "(" + barbaraNumber + ")");		
 					}
 				}
-				
 				if(monaUnlocked==false){
 					if(primogemCounter>=800){
 						monaUnlocked=true;
 						button3.setText("Mona" + "(" + monaNumber + ")");
 					}
 				}
-				
 				if(fischlUnlocked==false){
 					if(primogemCounter>=1600){
 						fischlUnlocked=true;
 						button4.setText("Fischl" + "(" + fischlNumber + ")");
 					}
 				}
-				
 				if(qiqiUnlocked==false){
 					if(primogemCounter>=12000){
 						qiqiUnlocked=true;
 						button5.setText("Qiqi" + "("+ qiqiNumber +")");
 					}
 				}
-				
 				if(ganyuUnlocked==false){
 					if(primogemCounter>=28800){
 						ganyuUnlocked=true;
@@ -306,7 +285,6 @@ public class PrimogemMain {
 		else if(timerOn==true){
 			timer.stop();
 		}
-		
 		double speed = 1/perSecond*1000;
 		timerSpeed = (int)Math.round(speed); 
 		
@@ -318,7 +296,6 @@ public class PrimogemMain {
 	}
     
     public class TitleScreenHandler implements ActionListener{
-
         public void actionPerformed(ActionEvent event) {
             createGameUI();
         }
@@ -388,7 +365,7 @@ public class PrimogemMain {
                     charLabel.setIcon(monapixel);
                     
                     perSecond = perSecond + 40;
-                    timerUpdate();
+                    timerUpdate();	
                 }
                 else {
     				messageText.setText("\n You need more primogems!");
@@ -408,7 +385,7 @@ public class PrimogemMain {
                     charLabel.setIcon(fischlpixel);
                   
                     perSecond = perSecond + 160;
-                    timerUpdate();
+                    timerUpdate();	
                 }
                 else {
     				messageText.setText("\n You need more primogems!");
@@ -429,7 +406,7 @@ public class PrimogemMain {
                     charLabel.setIcon(qiqipixel);
                     
                     perSecond = perSecond + 480;
-                    timerUpdate();
+                    timerUpdate();	
                 }
                 else {
     				messageText.setText("\n You need more primogems!");
@@ -450,7 +427,7 @@ public class PrimogemMain {
                     charLabel.setIcon(ganyupixel);
                     
                     perSecond = perSecond + 1600;
-                    timerUpdate();
+                    timerUpdate();	
                 }
                 else {
     				messageText.setText("\n You need more primogems!");
