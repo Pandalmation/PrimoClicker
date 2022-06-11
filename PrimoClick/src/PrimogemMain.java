@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.Timer;
 
 public class PrimogemMain { //initializing variables
-	JFrame window = new JFrame();
+	JFrame window = new JFrame(); //using JFrame to set up window
 	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel;
 	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel;
 	JButton button1, button2, button3, button4, button5, button6, startButton;
@@ -35,25 +35,26 @@ public class PrimogemMain { //initializing variables
     
     public PrimogemMain(){ //initializing variables
     	timerOn = false;
-		perSecond = 0;
-		primogemCounter = 0;
-		amberNumber = 0;
-		amberPrice = 10;
-		barbaraNumber = 0;
-		barbaraPrice = 160;
-		barbaraUnlocked = false;
-		monaNumber = 0;
-		monaPrice = 800;
-		monaUnlocked = false;
-		fischlNumber = 0;
-		fischlPrice = 1600;
-		fischlUnlocked = false;
-		qiqiNumber = 0;
-		qiqiPrice = 12000;
-		qiqiUnlocked = false;
-		ganyuNumber = 0;
-		ganyuUnlocked = false;
-		ganyuPrice = 28800;
+	perSecond = 0;
+	primogemCounter = 0;
+	//setting the characters initial values of (numbers of character bought, initial price for one, and setting it as locked)
+	amberNumber = 0;
+	amberPrice = 10;
+	barbaraNumber = 0;
+	barbaraPrice = 160;
+	barbaraUnlocked = false;
+	monaNumber = 0;
+	monaPrice = 800;
+	monaUnlocked = false;
+	fischlNumber = 0;
+	fischlPrice = 1600;
+	fischlUnlocked = false;
+	qiqiNumber = 0;
+	qiqiPrice = 12000;
+	qiqiUnlocked = false;
+	ganyuNumber = 0;
+	ganyuUnlocked = false;
+	ganyuPrice = 28800;
 	//calling the methods
     	createFont();
     	createMenuUI();
@@ -69,19 +70,18 @@ public class PrimogemMain { //initializing variables
     public void createMenuUI() { //method to create menu user interface 
     	
     	window.setSize(1280, 720);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.black);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to close the window properly
+        window.getContentPane().setBackground(Color.black); //to set the window's background color
         window.setTitle("PrimoClicker"); //sets the window title
-        window.setLayout(null);
-        window.setResizable(false);
-        window.getContentPane().setBackground(Color.black); 
+        window.setLayout(null); //to disable the default layout
+        window.setResizable(false); //make sure window cannot be resized
         
     	titleNamePanel = new JPanel();
         titleNamePanel.setBackground(Color.black);
         titleNamePanel.setBounds(340, 150, 600, 300);
-        titleNameLabel = new JLabel("PrimoClicker"); //
+        titleNameLabel = new JLabel("PrimoClicker"); // label for the game title
         titleNameLabel.setFont(font3);
-        titleNameLabel.setSize(700,700);
+        titleNameLabel.setSize(700,700); //to set size of the label
         titleNameLabel.setForeground(Color.white);
         titleNamePanel.add(titleNameLabel);
         
@@ -95,10 +95,10 @@ public class PrimogemMain { //initializing variables
         paimonLabel = new JLabel();
         paimonPanel.add(paimonLabel);
         window.add(paimonPanel);
-        ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png"));
+        ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png")); // to load image of the paimon sprite
         paimonLabel.setIcon(paimonpixel);
 
-        startButton = new JButton("CLICK!");
+        startButton = new JButton("CLICK!"); // the button to start the game that will direct to the cookie 
         startButton.setSize(900, 500);
         startButton.setBackground(Color.red);
         startButton.setForeground(Color.WHITE);
@@ -109,7 +109,7 @@ public class PrimogemMain { //initializing variables
         window.add(startButtonPanel); //adding the panels into the window
         window.add(titleNamePanel);
         
-        window.setVisible(true); //making everything inside the window visible
+        window.setVisible(true); //making the window appeal on the screen
     }
     //function to create the primoclicker UI
     public void createGameUI(){
@@ -176,62 +176,62 @@ public class PrimogemMain { //initializing variables
         button1.addActionListener(pHandler);
         button1.setActionCommand("amber");
         button1.addMouseListener(mHandler);
-		itemPanel.add(button1);
+	itemPanel.add(button1);
 		
-		button2 = new JButton("?");
-		button2.setFont(font1);
-		button2.setFocusPainted(false);
-		button2.addActionListener(pHandler);
-		button2.setActionCommand("barbara");
-		button2.addMouseListener(mHandler);
-		itemPanel.add(button2);
+	button2 = new JButton("?");
+	button2.setFont(font1);
+	button2.setFocusPainted(false);
+	button2.addActionListener(pHandler);
+	button2.setActionCommand("barbara");
+	button2.addMouseListener(mHandler);
+	itemPanel.add(button2);
 		
-		button3 = new JButton("?");
-		button3.setFont(font1);
-		button3.setFocusPainted(false);
-		button3.addActionListener(pHandler);
-		button3.setActionCommand("mona");
-		button3.addMouseListener(mHandler);
-		itemPanel.add(button3);
+	button3 = new JButton("?");
+	button3.setFont(font1);
+	button3.setFocusPainted(false);
+	button3.addActionListener(pHandler);
+	button3.setActionCommand("mona");
+	button3.addMouseListener(mHandler);
+	itemPanel.add(button3);
 		
-		button4 = new JButton("?");
-		button4.setFont(font1);
-		button4.setFocusPainted(false);
-		button4.addActionListener(pHandler);
-		button4.setActionCommand("fischl");
-		button4.addMouseListener(mHandler);
-		itemPanel.add(button4);
+	button4 = new JButton("?");
+	button4.setFont(font1);
+	button4.setFocusPainted(false);
+	button4.addActionListener(pHandler);
+	button4.setActionCommand("fischl");
+	button4.addMouseListener(mHandler);
+	itemPanel.add(button4);
 		
-		button5 = new JButton("?");
-		button5.setFont(font1);
-		button5.setFocusPainted(false);
-		button5.addActionListener(pHandler);
-		button5.setActionCommand("qiqi");
-		button5.addMouseListener(mHandler);
-		itemPanel.add(button5);
+	button5 = new JButton("?");
+	button5.setFont(font1);
+	button5.setFocusPainted(false);
+	button5.addActionListener(pHandler);
+	button5.setActionCommand("qiqi");
+	button5.addMouseListener(mHandler);
+	itemPanel.add(button5);
 		
-		button6 = new JButton("?");
-		button6.setFont(font1);
-		button6.setFocusPainted(false);
-		button6.addActionListener(pHandler);
-		button6.setActionCommand("ganyu");
-		button6.addMouseListener(mHandler);
-		itemPanel.add(button6);
+	button6 = new JButton("?");
+	button6.setFont(font1);
+	button6.setFocusPainted(false);
+	button6.addActionListener(pHandler);
+	button6.setActionCommand("ganyu");
+	button6.addMouseListener(mHandler);
+	itemPanel.add(button6);
         
-		JPanel messagePanel = new JPanel();
-		messagePanel.setBounds(850, 70, 500, 200);
-		messagePanel.setBackground(Color.black);
-		window.add(messagePanel);
+	JPanel messagePanel = new JPanel();
+	messagePanel.setBounds(850, 70, 500, 200);
+	messagePanel.setBackground(Color.black);
+	window.add(messagePanel);
 		
-		messageText = new JTextArea();
-		messageText.setBounds(700, 70, 500, 150);
-		messageText.setForeground(Color.green);
-		messageText.setBackground(Color.black);
-		messageText.setFont(font2);
-		messageText.setLineWrap(true);
-		messageText.setWrapStyleWord(true);
-		messageText.setEditable(false);
-		messagePanel.add(messageText);
+	messageText = new JTextArea();
+	messageText.setBounds(700, 70, 500, 150);
+	messageText.setForeground(Color.green);
+	messageText.setBackground(Color.black);
+	messageText.setFont(font2);
+	messageText.setLineWrap(true);
+	messageText.setWrapStyleWord(true);
+	messageText.setEditable(false);
+	messagePanel.add(messageText);
         
         window.setVisible(true);
     }
