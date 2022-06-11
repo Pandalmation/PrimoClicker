@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
-public class PrimogemMain {
+public class PrimogemMain { //initializing variables
 	JFrame window = new JFrame();
 	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel;
 	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel;
@@ -33,7 +33,7 @@ public class PrimogemMain {
         new PrimogemMain();
     }
     
-    public PrimogemMain(){
+    public PrimogemMain(){ //initializing variables
     	timerOn = false;
 		perSecond = 0;
 		primogemCounter = 0;
@@ -54,32 +54,32 @@ public class PrimogemMain {
 		ganyuNumber = 0;
 		ganyuUnlocked = false;
 		ganyuPrice = 28800;
-    	primogemCounter = 0;
+	//calling the methods
     	createFont();
     	createMenuUI();
     }
     
-    public void createFont() {
+    public void createFont() { //function to create different fonts
     	font1 = new Font("Comic Sans MS", Font.PLAIN, 40);
     	font2 = new Font("Comic Sans MS", Font.PLAIN, 30);
     	font3 = new Font("DialogInput", Font.PLAIN, 50);
     	font4 = new Font("Monospaced", Font.PLAIN, 50);
     }
     
-    public void createMenuUI() {
+    public void createMenuUI() { //method to create menu user interface 
     	
     	window.setSize(1280, 720);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
-        window.setTitle("PrimoClicker");
+        window.setTitle("PrimoClicker"); //sets the window title
         window.setLayout(null);
         window.setResizable(false);
-        window.getContentPane().setBackground(Color.black);
+        window.getContentPane().setBackground(Color.black); 
         
     	titleNamePanel = new JPanel();
         titleNamePanel.setBackground(Color.black);
         titleNamePanel.setBounds(340, 150, 600, 300);
-        titleNameLabel = new JLabel("PrimoClicker");
+        titleNameLabel = new JLabel("PrimoClicker"); //
         titleNameLabel.setFont(font3);
         titleNameLabel.setSize(700,700);
         titleNameLabel.setForeground(Color.white);
@@ -106,22 +106,22 @@ public class PrimogemMain {
         startButton.addActionListener(TsHandler);
         startButton.setFocusPainted(false);
         startButtonPanel.add(startButton);
-        window.add(startButtonPanel);
+        window.add(startButtonPanel); //adding the panels into the window
         window.add(titleNamePanel);
         
-        window.setVisible(true);
+        window.setVisible(true); //making everything inside the window visible
     }
-    
+    //function to create the primoclicker UI
     public void createGameUI(){
-    	titleNamePanel.setVisible(false);
+    	titleNamePanel.setVisible(false); //making panels from the menu screen invisible
     	startButtonPanel.setVisible(false);
     	paimonPanel.setVisible(false);
-        window.setSize(1280, 720);
+        window.setSize(1280, 720); //Setting window size
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
-        window.setTitle("PrimoClicker");
-        window.setLayout(null);
-        window.setResizable(false);
+        window.setTitle("PrimoClicker"); //setting window title
+        window.setLayout(null); 
+        window.setResizable(false); //not allowing user to fullscreen the window
      
         JPanel primoPanel = new JPanel();
         primoPanel.setBounds(100, 200, 300, 600);
@@ -236,7 +236,7 @@ public class PrimogemMain {
         window.setVisible(true);
     }
     
-    public void setTimer(){
+    public void setTimer(){ //function to set timer for when to show names of the characters available to be purchased + how much of it has been bought
 		timer = new Timer(timerSpeed, new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -437,7 +437,7 @@ public class PrimogemMain {
     	
     	}
     }
-    
+    //
     public class MouseHandler implements MouseListener{
 		
 		@Override
