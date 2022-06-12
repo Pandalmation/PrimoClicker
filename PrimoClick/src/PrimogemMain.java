@@ -16,16 +16,16 @@ import javax.swing.Timer;
 
 public class PrimogemMain { //class for main program
 	JFrame window = new JFrame(); //using JFrame to set up window
-	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel;
-	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel;
-	JButton button1, button2, button3, button4, button5, button6, startButton;
+	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel; //Jpanels
+	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel; //JLabels
+	JButton button1, button2, button3, button4, button5, button6, startButton; //JButtons
 	int primogemCounter, timerSpeed, amberNumber, amberPrice, barbaraNumber, barbaraPrice, monaNumber, monaPrice, fischlNumber, fischlPrice, qiqiNumber, qiqiPrice, ganyuNumber, ganyuPrice; 
 	double perSecond;
-	boolean timerOn, barbaraUnlocked, monaUnlocked, fischlUnlocked, qiqiUnlocked, ganyuUnlocked;
-	Font font1, font2, font3, font4;
+	boolean timerOn, barbaraUnlocked, monaUnlocked, fischlUnlocked, qiqiUnlocked, ganyuUnlocked; //boolean type
+	Font font1, font2, font3, font4; //fonts
 	PrimogemHandler pHandler = new PrimogemHandler();
 	Timer timer;
-	JTextArea messageText;
+	JTextArea messageText; //JtextArea
 	MouseHandler mHandler = new MouseHandler();
 	TitleScreenHandler TsHandler = new TitleScreenHandler();
 
@@ -61,7 +61,7 @@ public class PrimogemMain { //class for main program
     }
     
     public void createFont() { //function to create different fonts
-    	font1 = new Font("Comic Sans MS", Font.PLAIN, 40);
+    	font1 = new Font("Comic Sans MS", Font.PLAIN, 40); //just different fonts to use 
     	font2 = new Font("Comic Sans MS", Font.PLAIN, 30);
     	font3 = new Font("DialogInput", Font.PLAIN, 50);
     	font4 = new Font("Monospaced", Font.PLAIN, 50);
@@ -76,36 +76,36 @@ public class PrimogemMain { //class for main program
         window.setLayout(null); //to disable the default layout
         window.setResizable(false); //make sure window cannot be resized
         
-    	titleNamePanel = new JPanel();
+    	titleNamePanel = new JPanel(); //Panel for the game title
         titleNamePanel.setBackground(Color.black);
-        titleNamePanel.setBounds(340, 150, 600, 300);
+        titleNamePanel.setBounds(340, 150, 600, 300); //setting x,y,width,height of the panel
         titleNameLabel = new JLabel("PrimoClicker"); // label for the game title
-        titleNameLabel.setFont(font3);
+        titleNameLabel.setFont(font3); //applying the font already existing
         titleNameLabel.setSize(700,700); //to set size of the label
-        titleNameLabel.setForeground(Color.white);
-        titleNamePanel.add(titleNameLabel);
+        titleNameLabel.setForeground(Color.white); //to set the foreground color of the label
+        titleNamePanel.add(titleNameLabel); //adding the title to the label
         
-        startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(240, 400, 800, 200);
-        startButtonPanel.setBackground(Color.black);
+        startButtonPanel = new JPanel(); //panel for the start button
+        startButtonPanel.setBounds(240, 400, 800, 200); //setting x,y,width,height of the panel
+        startButtonPanel.setBackground(Color.black); //setting background color of panel as black so it blends with the black window background 
         
-        paimonPanel = new JPanel();
-        paimonPanel.setBounds(535, 250, 200, 150);
-        paimonPanel.setBackground(Color.black);
-        paimonLabel = new JLabel();
-        paimonPanel.add(paimonLabel);
-        window.add(paimonPanel);
-        ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png")); // to load image of the paimon sprite
-        paimonLabel.setIcon(paimonpixel);
+        paimonPanel = new JPanel(); //create panel for Paimon
+        paimonPanel.setBounds(535, 250, 200, 150); //setting x,y,width,height of the panel
+        paimonPanel.setBackground(Color.black); //set background color for paimon panel
+        paimonLabel = new JLabel(); //create label for paimon
+        paimonPanel.add(paimonLabel); //adding the label to the panel
+        window.add(paimonPanel); //adding the panel to the window
+        ImageIcon paimonpixel = new ImageIcon(getClass().getResource("paimonpixel.png")); //to load image of the paimon sprite
+        paimonLabel.setIcon(paimonpixel); //setting icon of paimon into the Label
 
-        startButton = new JButton("CLICK!"); // the button to start the game that will direct to the cookie 
-        startButton.setSize(900, 500);
-        startButton.setBackground(Color.red);
-        startButton.setForeground(Color.WHITE);
-        startButton.setFont(font4);
-        startButton.addActionListener(TsHandler);
-        startButton.setFocusPainted(false);
-        startButtonPanel.add(startButton);
+        startButton = new JButton("CLICK!"); //the button to start the game that will direct to the cookie 
+        startButton.setSize(900, 500); //setting width height size of button
+        startButton.setBackground(Color.red); //set button background color
+        startButton.setForeground(Color.WHITE); //set foreground button color
+        startButton.setFont(font4); //applying the font for the text in start button
+        startButton.addActionListener(TsHandler); 
+        startButton.setFocusPainted(false); //setting it false so that there is no blue focus ring around
+        startButtonPanel.add(startButton); //adding the start button into the start button panel
         window.add(startButtonPanel); //adding the panels into the window
         window.add(titleNamePanel);
         
@@ -438,9 +438,9 @@ public class PrimogemMain { //class for main program
     	}
     }
     //
-    public class MouseHandler implements MouseListener{
+    public class MouseHandler implements MouseListener{ //class of mousehandler
 		
-		@Override
+		@Override // helps prevent the case when you write a function that you think overrides another one
 		public void mouseClicked(MouseEvent e){
 			
 		}
