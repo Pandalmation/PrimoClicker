@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
-public class PrimogemMain { //initializing variables
+public class PrimogemMain { //class for main program
 	JFrame window = new JFrame(); //using JFrame to set up window
 	JPanel titleNamePanel, startButtonPanel, charPanel, paimonPanel;
 	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel;
