@@ -20,11 +20,11 @@ public class PrimogemMain { //class for main program
 	JLabel counterLabel, perSecLabel, charLabel, titleNameLabel, paimonLabel; //JLabels
 	JButton button1, button2, button3, button4, button5, button6, startButton; //JButtons
 	int primogemCounter, timerSpeed, amberNumber, amberPrice, barbaraNumber, barbaraPrice, monaNumber, monaPrice, fischlNumber, fischlPrice, qiqiNumber, qiqiPrice, ganyuNumber, ganyuPrice; 
-	double perSecond;
+	double perSecond; //for the primogem persecond
 	boolean timerOn, barbaraUnlocked, monaUnlocked, fischlUnlocked, qiqiUnlocked, ganyuUnlocked; //boolean type
 	Font font1, font2, font3, font4; //fonts
 	PrimogemHandler pHandler = new PrimogemHandler();
-	Timer timer;
+	Timer timer; //Timer from javax.swing.Timer called timer
 	JTextArea messageText; //JtextArea
 	MouseHandler mHandler = new MouseHandler();
 	TitleScreenHandler TsHandler = new TitleScreenHandler();
@@ -61,7 +61,7 @@ public class PrimogemMain { //class for main program
     }
     
     public void createFont() { //function to create different fonts
-    	font1 = new Font("Comic Sans MS", Font.PLAIN, 40); //just different fonts to use 
+    	font1 = new Font("Comic Sans MS", Font.PLAIN, 40); //(font name, font style, font size)
     	font2 = new Font("Comic Sans MS", Font.PLAIN, 30);
     	font3 = new Font("DialogInput", Font.PLAIN, 50);
     	font4 = new Font("Monospaced", Font.PLAIN, 50);
@@ -133,14 +133,14 @@ public class PrimogemMain { //class for main program
         charPanel.setBackground(Color.black);
         window.add(charPanel);
 
-        ImageIcon primogem = new ImageIcon(getClass().getResource("primogemimg.png"));
+        ImageIcon primogem = new ImageIcon(getClass().getResource("primogemimg.png")); //to get picture of the giant primogem 
         
         JButton primogemButton = new JButton();
         primogemButton.setBackground(Color.black);
-        primogemButton.setFocusPainted(false);
-        primogemButton.setBorder(null);
-        primogemButton.setIcon(primogem);
-        primogemButton.addActionListener(pHandler);
+        primogemButton.setFocusPainted(false); //disable the focus line around the button
+        primogemButton.setBorder(null); //disable the border around the button
+        primogemButton.setIcon(primogem); //set the primogem image as an icon on the button 
+        primogemButton.addActionListener(pHandler); //phandler gets called when button gets clicked
         primogemButton.setActionCommand("primogem");
         primogemButton.setContentAreaFilled(false);
         primoPanel.add(primogemButton);
@@ -148,8 +148,8 @@ public class PrimogemMain { //class for main program
         JPanel counterPanel = new JPanel();
         counterPanel.setBounds(100,50,400,150);
         counterPanel.setBackground(Color.black);
-        counterPanel.setLayout(new GridLayout(2,1));
-        window.add(counterPanel);
+        counterPanel.setLayout(new GridLayout(2,1)); //(vertical column, horizontal column)
+        window.add(counterPanel); //panel for the primogem counter added
         
         charLabel = new JLabel();
         charPanel.add(charLabel);
@@ -237,11 +237,11 @@ public class PrimogemMain { //class for main program
     }
     
     public void setTimer(){ //function to set timer for when to show names of the characters available to be purchased + how much of it has been bought
-		timer = new Timer(timerSpeed, new ActionListener(){
+		timer = new Timer(timerSpeed, new ActionListener(){ //parameters consist of timerspeed
 			@Override
-			public void actionPerformed(ActionEvent e){
-				primogemCounter++;
-				counterLabel.setText(primogemCounter + " primogems");
+			public void actionPerformed(ActionEvent e){ //when timer activates, everything here runs and repeats
+				primogemCounter++; //increase primo number by 1
+				counterLabel.setText(primogemCounter + " primogems"); 
 				
 				if(barbaraUnlocked==false){
 					if(primogemCounter>=160){
@@ -286,10 +286,10 @@ public class PrimogemMain { //class for main program
 			timer.stop();
 		}
 		double speed = 1/perSecond*1000;
-		timerSpeed = (int)Math.round(speed); 
+		timerSpeed = (int)Math.round(speed); //how often it increases cookie number
 		
 		String s = String.format("%.1f", perSecond);
-		perSecLabel.setText("per second: " + s);
+		perSecLabel.setText("per second: " + s); //to display how many primogems generated per second
 		
 		setTimer();
 		timer.start();
@@ -306,32 +306,32 @@ public class PrimogemMain { //class for main program
     		
     		String action = event.getActionCommand();
     		
-    		switch(action){
+    		switch(action){ //using switch case
     		case "primogem":
-    			primogemCounter++;
-    			counterLabel.setText(primogemCounter + " primogems");
+    			primogemCounter++; //++ = +1 when primogem button gets click, the counter increase +1
+    			counterLabel.setText(primogemCounter + " primogems"); //setting text on the label for the primogem counter
     			break;
     			
-    		case "amber":
-    			if(primogemCounter>=amberPrice) {
-    				primogemCounter = primogemCounter - amberPrice;
-    				amberPrice= amberPrice + 5;
-    				counterLabel.setText(primogemCounter + " primogems");
+    		case "amber": 
+    			if(primogemCounter>=amberPrice) { //when primogems obtained is = amber's price or even more
+    				primogemCounter = primogemCounter - amberPrice; //when amber is bought, primogem counter will be updated
+    				amberPrice= amberPrice + 5; //price of amber increases everytime its bought 
+    				counterLabel.setText(primogemCounter + " primogems"); //set text for the counter label of how much primogems owned (updated)
     				
-    				amberNumber++;
-					button1.setText("Amber " + "(" + amberNumber + ")");
-					messageText.setText("Amber\n[price: " + amberPrice + "]\nEach Amber produces 0.1 primogem per second.");
-					ImageIcon amberpixel = new ImageIcon(getClass().getResource("amberpixel.png"));
-					charLabel.setIcon(amberpixel);
+    				amberNumber++; //+1 
+					button1.setText("Amber " + "(" + amberNumber + ")"); //number of ambers purchased gets updated in the button
+					messageText.setText("Amber\n[price: " + amberPrice + "]\nEach Amber produces 0.1 primogem per second."); //set text when jover over button
+					ImageIcon amberpixel = new ImageIcon(getClass().getResource("amberpixel.png")); //load amber pixel image as imageicon
+					charLabel.setIcon(amberpixel); //set Icon of amber pixel into a label
 					
-					perSecond = perSecond + 0.1;
-					timerUpdate();
+					perSecond = perSecond + 0.1; //auto clicks every 10 second
+					timerUpdate(); //call timer update function 
     			}
     			else {
-    				messageText.setText("\n You need more primogems!");
+    				messageText.setText("\n You need more primogems!"); //if primogems is not enough, it will display this text instead
     			}
     			break;
-    			
+    		//same concept like amber
     		case "barbara":
     			if(primogemCounter >= barbaraPrice) {
 					primogemCounter = primogemCounter - barbaraPrice;
@@ -453,18 +453,18 @@ public class PrimogemMain { //class for main program
 			
 		}
 		@Override
-		public void mouseEntered(MouseEvent e){ 
-			JButton button = (JButton)e.getSource();
+		public void mouseEntered(MouseEvent e){ //when mouse is hovering some object
+			JButton button = (JButton)e.getSource(); //determines which button you press your mouse on
 			
-			if(button == button1){
-				messageText.setText("Amber\n[price: " + amberPrice + "]\nEach Amber produces 0.1 primogem every second.");
+			if(button == button1){ 
+				messageText.setText("Amber\n[price: " + amberPrice + "]\nEach Amber produces 0.1 primogem every second."); 
 			}
 			
 			else if(button == button2){
-				if(barbaraUnlocked==false){
+				if(barbaraUnlocked==false){ //if it is still locked, it will display a text
 					messageText.setText("\n\nThis item is\ncurrently locked!");
 				}
-				else{
+				else{ //if it is not locked, it will display the description of the character and upgrade
 					messageText.setText("Barbara\n[price: " + barbaraPrice + "]\nEach Barbara produces 10 primogems per second.");
 				}	
 			}
@@ -506,12 +506,12 @@ public class PrimogemMain { //class for main program
 			}
 		}
 		@Override
-		public void mouseExited(MouseEvent e){
+		public void mouseExited(MouseEvent e){ //function when mouse is not hovering oveer the button, it will run this
 			
 			JButton button = (JButton)e.getSource();
 			
 			if(button == button1){
-				messageText.setText(null);
+				messageText.setText(null); //when it detects that pointer is not hovering over the button, the message text will disappear
 			}
 			else if(button == button2){
 				messageText.setText(null);
